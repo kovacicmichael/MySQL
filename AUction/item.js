@@ -48,11 +48,12 @@ function display(){
 	connection.query("SELECT * FROM items", function(err, res){
 		if (err) throw err;
 		//console.log(res);
+		itemsArray = [];
 		for(var i = 0; i < res.length; i++){
 			console.log(res[i].id + " | " + res[i].item_name + " | " + res[i].category + " | " + res[i].starting_bid + " | " +res[i].highest_bid)
-			//itemsArray.push(res[i].item_name);
-			
+			itemsArray.push(res[i].item_name);
 		}
+		//console.log(itemsArray);
 		inquire();
 	})
 };
@@ -142,9 +143,9 @@ function createQuery(item_name, category){
 		},
 		function(err, res){
 			if(err) throw err;
-			console.log(res.affectedRows + "dataset inserted!\n");
+			console.log("Dataset inserted!\n");
 			//updateQuery();
-			itemsArray.push(res[0].item_name, res[0].category, res[0].starting_bid, res[0].highest_bid)
+			//itemsArray.push(res[0].item_name)
 			display();
 		}
 	);
