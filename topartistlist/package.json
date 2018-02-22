@@ -1,0 +1,15 @@
+{
+  "name": "topartistlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "top5000.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^5.1.0",
+    "mysql": "^2.15.0"
+  }
+}

@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 
 var itemsArray = [];
 var bids = [];
-
+p
 connection.connect(function(error){
 	if(error) throw error;
 
