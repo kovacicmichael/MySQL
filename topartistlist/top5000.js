@@ -57,12 +57,24 @@ function promptUser(){
 						{
 							type: "input",
 							name: "start",
-							message: "What position would you like to start with?"
+							message: "What position would you like to start with?",
+							validate: function(value){
+								if(isNan(value) === false){
+									return true;
+								}
+								return false;
+							}
 						},
 						{
 							type: "input",
 							name: "end",
-							message: "What position would you like to end with?"
+							message: "What position would you like to end with?",
+							validate: function(value){
+								if(isNan(value) === false){
+									return true;
+								}
+								return false;
+							}
 						}
 
 				]).then(function(response){
@@ -89,6 +101,7 @@ function artistSearch(userChoice){
 				console.log("Position: " + res[i].position + " | " + "Artist: " + res[i].artist_name + " | " + "Song: " + res[i].song_name + " | " + "Year: " + res[i].year);
 			}
 		}
+	promptUser();
 	})
 }
 
@@ -128,6 +141,20 @@ function multipleArtist(){
 					console.log("Position: " + res[i].position + " | " + "Artist: " + res[i].artist_name);
 				}
 	})
+}
+
+
+function joinedTable(){
+	var query = "SELECT top_song.artist_name, top_album.album_name, top_song.song_name, top_album.albumPosition, top_song.songPosition, top_song.year, top_album.year FROM top_album RIGHT JOIN top_song ON top_album.artist_name=top_song.artist_name AND top_album.year = top_song.year WHERE (top_album.artist_name = ? AND top_song.artist_name = ?) ORDER BY artist_name ASC"
+	connection.query(query, []
+		function (err, res){
+			for(var i = 0; i < res.length; i++){
+
+			}
+
+
+		})
+
 }
 
 // SELECT column-names
